@@ -1,7 +1,11 @@
-body{
+html,body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
     font-family: 'Nunito', sans-serif !important;
     overflow-y: scroll;
-    overflow-x: hidden;
 }
 .portfolio-header{
     height: 92px;
