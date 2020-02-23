@@ -1,0 +1,134 @@
+body{
+    font-family: 'Nunito', sans-serif !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.portfolio-header{
+    height: 92px;
+    width: 100%;
+    background: #111;
+}
+.phead-component{
+    cursor: pointer;
+    display: block;
+    color: #FFF;
+    line-height: 92px;
+    padding: 0 1em;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+}
+.phead-component:hover{
+    color: #666666;
+    transition: all 0.3s;
+}
+.phead-media-icons{
+    cursor: pointer;
+    display: block;
+    color: #FFF !important;
+    line-height: 92px;
+    padding: 0 1em;
+    font-size: 18px;
+    font-weight: 600;
+}
+.media-icon{
+    padding: 25px;
+}
+.media-icon-fa:hover{
+    color: #666666 !important;
+    transition: all 0.3s;
+}
+.my-avatar{
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 70px;
+    margin-top: 10px;
+    margin-left:30px;
+    background: blanchedalmond;
+}
+.my-avatar:hover{
+    color: #666666 !important;
+    transition: all 0.3s;
+}
+.screen-1-pic{
+    
+}
+.screen-1{
+    box-shadow: -7px 5px 8px #888888;
+}
+.screen-1:hover{
+    box-shadow: -7px 10px 8px #888888;
+    transition: all 0.3s;
+}
+.coder-head{
+    font-size: 4.5rem;
+    font-weight: 600;
+    margin-top: 40px;
+    color: #111;
+    text-align:center;
+}
+.coder-desc{
+    font-size: 18px;
+    font-weight: 600;
+    text-align:center;
+}
+.head-screen-2{
+    font-size: 4.0rem;
+    letter-spacing: 4px;
+    font-weight: 600;
+    margin-top: 40px;
+    font-family: 'Roboto';
+    text-align:center;
+}
+.screen-2{
+    margin-top:8px;
+    background: #111;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+.desc-screen-2{
+    margin-top:20px;
+    color: #fff;
+    font-size: 1.375em;
+    line-height:1.5em;
+    text-align:center;
+    margin-bottom:30px;
+}
+.cp-profiles{
+    background: #fff;
+}
+.cp-card{
+    border: 1px solid #eeeeee;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-right: 40px;
+    padding: 0px !important;
+    box-shadow: 0px 0px 18px #888888;
+    cursor: pointer;
+}
+.cp-card:hover{
+    box-shadow: 0px 10px 18px #888888;
+    transition: all 0.6s;
+}
+.cp-card-cover{
+    border-bottom: 1px solid #eeeeee;    
+}
+.cp-card-desc-head{
+    font-size: 1.4em;
+    padding: 10px;
+    font-weight: 600;
+}
+.cp-card-desc-desc{
+    padding: 10px;
+    font-size: 1.2em;
+    color: #706f6f;
+    margin-bottom:30px;
+}
+.cp-profile-head{
+    margin-top:70px;
+    color: #222;
+    font-weight: 600;
+    padding: 0px !important;
+    font-size: 2.0em;
+    line-height:1.5em;
+}
