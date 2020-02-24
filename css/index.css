@@ -170,6 +170,53 @@ html,body{
     top: 10px;
     left: 10px;
 }
+.achievments-section{
+    background: #e2dedd;
+}
+.achievment-card{
+    padding:0px !important;
+    position: relative;
+    background-image: url('../media/icpc-banner.jpg');
+    margin: 50px;
+    box-shadow: -7px 10px 8px #111;
+}
+.achievment-title{
+    margin-top:70px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 2.0em;
+    line-height:1.5em;   
+    font-family: 'Roboto';
+}
+.achievment-description{
+    margin-top:20px;
+    color: #fff;
+    font-size: 1.375em;
+    line-height:1.5em;
+    margin-bottom:30px;
+}
+.achievment-btn{
+    margin-bottom: 30px;
+    margin-left:17px;
+    width: 200px;
+    background: #fff;
+    padding: 15px;
+    box-shadow:  -7px 5px 8px #111;
+    font-weight: 600;
+    font-size: 1.513rem;
+    line-height: 2.625rem;
+    border-radius: 0.25rem;
+    letter-spacing: 0.125rem;
+    background: transparent;
+    border: 2px solid wheat;
+    color: wheat;
+    cursor: pointer;
+}
+.achievment-btn:hover{
+    color: white;
+    box-shadow: -7px 10px 8px #111;
+    transition: all 0.3s;
+}
 @media(max-width:1200px) {
     .about-header{
         display: none !important;
