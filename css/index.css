@@ -67,7 +67,7 @@ html,body{
 .coder-head{
     font-size: 4.5rem;
     font-weight: 600;
-    margin-top: 40px;
+    margin-top: 10%;
     color: #111;
     text-align:center;
 }
@@ -75,6 +75,7 @@ html,body{
     font-size: 18px;
     font-weight: 600;
     text-align:center;
+    margin-bottom: 20px;
 }
 .head-screen-2{
     font-size: 4.0rem;
@@ -136,3 +137,11 @@ html,body{
     font-size: 2.0em;
     line-height:1.5em;
 }
+@media(max-width:480px) {
+    .screen-1-pic{
+        display: none;
+    }
+    .screen-1-pic-mobile{
+        display: block !important;
+    }
+}   
