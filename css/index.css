@@ -180,4 +180,7 @@ html,body{
     .screen-1-pic-mobile{
         display: block !important;
     }
+    .my-avatar{
+        margin-left: -20px;
+    }
 }   
