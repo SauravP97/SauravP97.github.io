@@ -11,6 +11,11 @@ html,body{
     height: 92px;
     width: 100%;
     background: #111;
+    position: fixed !important;
+    right: 0 !important;
+    left: 0 !important; 
+    z-index: 999 !important;
+    box-shadow: -7px 5px 8px #888888;
 }
 .phead-component{
     cursor: pointer;
@@ -36,7 +41,7 @@ html,body{
     font-weight: 600;
 }
 .media-icon{
-    padding: 25px;
+    padding: 10px;
 }
 .media-icon-fa:hover{
     color: #666666 !important;
@@ -59,6 +64,7 @@ html,body{
 }
 .screen-1{
     box-shadow: -7px 5px 8px #888888;
+    margin-top: 91px;
 }
 .screen-1:hover{
     box-shadow: -7px 10px 8px #888888;
@@ -136,6 +142,36 @@ html,body{
     padding: 0px !important;
     font-size: 2.0em;
     line-height:1.5em;
+}
+.side-left-drawer{
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color:rgba(1,1,1,0.7); /* Black*/
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 90px; /* Place content 90px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+.side-left-item{
+    cursor: pointer;
+    display: block;
+    color: #FFF !important;
+    line-height: 62px;
+    padding: 0 1em;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+@media(max-width:1200px) {
+    .about-header{
+        display: none !important;
+    }
+    .drawer-down{
+        display: block !important;
+    }
 }
 @media(max-width:480px) {
     .screen-1-pic{

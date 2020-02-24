@@ -17,49 +17,59 @@
 <body>
     <div class="row">
         <div class="col-xs-12 portfolio-header">
-            <div class="row">
-                <div class="col-xs-5 phead-my-avatar">
+                <div class="col-lg-5 col-sm-6 col-xs-4 phead-my-avatar">
                     <img class="my-avatar" src="media/my-avatar.png">
                 </div>
-                <div class="col-xs-1 phead-component">
-                    About
+                <div class="side-left-drawer">
+                    <a class="side-left-item" href="#">About</a>
+                    <a class="side-left-item" href="#">Services</a>
+                    <a class="side-left-item" href="#">Clients</a>
+                    <a class="side-left-item" href="#">Contact</a>
                 </div>
-                <div class="col-xs-1 phead-component">
-                    Blog
+                <div class="col-lg-4 about-header">
+                    <div class="col-lg-3 phead-component">
+                        About
+                    </div>
+                    <div class="col-lg-3 phead-component">
+                        Blog
+                    </div>
+                    <div class="col-lg-3 phead-component">
+                        Events
+                    </div>
+                    <div class="col-lg-3 phead-component">
+                        Contact
+                    </div>
                 </div>
-                <div class="col-xs-1 phead-component">
-                    Events
-                </div>
-                <div class="col-xs-1 phead-component">
-                    Contact
-                </div>
-                <div class="col-xs-3 phead-media-icons">
-                    <div class="col-xs-3 col-xs-offset-1 media-icon">
+                <div class="col-lg-3 col-sm-6 col-xs-8 phead-media-icons">
+                    <div class="col-xs-3 col-lg-2 col-lg-offset-2 media-icon">
                         <a class="media-icon-fa" style="color:white" href="https://www.linkedin.com/in/saurav-prateek-7b2096140/">
                             <i class="fa fa-2x fa-linkedin" title="Let's Connect Professionally"></i>
                         </a>
                     </div>
-                    <div class="col-xs-3 media-icon">
+                    <div class="col-xs-3 col-lg-2 media-icon">
                         <a class="media-icon-fa" style="color:white" href="https://github.com/SauravP97">
                             <i class="fa fa-2x fa-github" title="My github Profile"></i>
                         </a>
                     </div>
-                    <div class="col-xs-3 media-icon">
+                    <div class="col-xs-3 col-lg-2 media-icon">
                         <a class="media-icon-fa" style="color:white" href="https://www.codechef.com/users/srvptk">
                             <i class="fa fa-2x fa-code" title="My Codechef Profile"></i>
                         </a>
                     </div>
-                    <div class="col-xs-2 media-icon"></div>
+                    <div class="col-xs-3 col-lg-2 media-icon">
+                        <a onClick="changeNav()" class="media-icon-fa drawer-down" style="color:white; display:none;">
+                            <i class="fa fa-2x fa-tasks" aria-hidden="true"></i>
+                        </a>
+                    </div>
                 </div>
-            </div>
         </div>
 
         <div class="col-xs-12 screen-1">
-            <div class="col-sm-6 col-xs-12" style="padding:0px !important;">
+            <div class="col-lg-7 col-sm-6 col-xs-12" style="padding:0px !important;">
                 <img class="screen-1-pic" src="media/screen-1.jpg">
                 <img class="screen-1-pic-mobile" style="display:none; width:100%;" src="media/screen-1-mobile.jpg">
             </div>
-            <div class="col-sm-6 col-xs-12">
+            <div class="col-lg-4 col-sm-6 col-xs-12">
                 <div class="coder-head">
                     &lt; coder &gt;
                 </div>
@@ -168,3 +178,16 @@
     </div>
 </body>
 </html>
+
+<script>
+    function changeNav() {
+        var width = $(".side-left-drawer").width();
+        console.log(width);
+        if(width == 0){
+            $(".side-left-drawer").width(250);
+        }
+        else{
+            $(".side-left-drawer").width(0);
+        }
+    }
+</script>
