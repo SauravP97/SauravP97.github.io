@@ -176,7 +176,6 @@ html,body{
 .achievment-card{
     padding:0px !important;
     position: relative;
-    background-image: url('../media/icpc-banner.jpg');
     margin: 50px;
     box-shadow: -7px 10px 8px #111;
 }
@@ -217,6 +216,16 @@ html,body{
     box-shadow: -7px 10px 8px #111;
     transition: all 0.3s;
 }
+.achievment-card-icpc{
+    background-image: url('../media/icpc-banner.jpg');
+}
+.achievment-card-ccdsap{
+    background-image: url('../media/ccdsap-bg.jpg');
+}
+.achievment-card-techgig{
+    background-image: url('../media/techgig-bg.jpg');
+}
+
 @media(max-width:1200px) {
     .about-header{
         display: none !important;
@@ -234,5 +243,11 @@ html,body{
     }
     .my-avatar{
         margin-left: -20px;
+    }
+    #barchart_values_mobile{
+        display: block !important;
+    }
+    #barchart_values{
+        display: none !important;
     }
 }   

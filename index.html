@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 </head>
 
 <body>
@@ -182,7 +183,7 @@
         </div>
 
         <div class="col-xs-12 achievments-section">
-            <div class="col-xs-10 col-xs-offset-1 achievment-card">
+            <div class="col-xs-10 col-xs-offset-1 achievment-card achievment-card-icpc">
                 <div class="col-sm-10 col-xs-12 achievment-content">
                     <div class="col-xs-12 col-sm-10 achievment-title">
                         ACM ICPC 2018
@@ -196,8 +197,58 @@
                     </div>
                 </div>
                 <div class="col-xs-12 achievment-btn-content">
-                    <button type="button" onclick="showIcpcModal()" class="achievment-btn">View Certificate</div>
+                    <button type="button" onclick="showIcpcModal()" class="achievment-btn">View Certificate</button>
                 </div>
+            </div>
+
+            <div class="col-xs-10 col-xs-offset-1 achievment-card achievment-card-ccdsap">
+                <div class="col-sm-10 col-xs-12 achievment-content">
+                    <div class="col-xs-12 col-sm-10 achievment-title">
+                        CCDSAP (Advanced and Foundation)
+                    </div>
+                    <div class="col-xs-12 col-sm-10 achievment-description">
+                        I have passed the Codechef Certified Data Structures and 
+                        Algorithms Programme both Foundation and  Advanced Level,
+                        it's a certification provided by codechef which demonstrates
+                        someone's grasp over DSA. Along with certification I also got the 
+                        opportunity to get mentioned in the 
+                        <a target="_blank" href="https://www.codechef.com/certification/data-structures-and-algorithms/certified-programmers">
+                        Hall of Certified Programmers</a>.
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-lg-3 achievment-btn-content">
+                    <button type="button" onclick="showCcdsapFModal()" class="achievment-btn">Foundation Certificate</button>
+                </div>
+                <div class="col-xs-12 col-sm-5 col-lg-3 achievment-btn-content">
+                    <button type="button" onclick="showCcdsapAModal()" class="achievment-btn">Advanced Certificate</button>
+                </div>
+            </div>
+
+            <div class="col-xs-10 col-xs-offset-1 achievment-card achievment-card-techgig">
+                <div class="col-sm-10 col-xs-12 achievment-content">
+                    <div class="col-xs-12 col-sm-10 achievment-title">
+                        Techgig Code Gladiators 2018 Finals
+                    </div>
+                    <div class="col-xs-12 col-sm-10 achievment-description">
+                        I have been qualified for the Final Round of Techgig 
+                        Code Gladiators 2018, and secured an overall rank of 47
+                        among across 300 finalist. The contest recieved an overall 2.5 lakh
+                        participants and the finals were held in Mumbai.
+                    </div>
+                </div>
+                <div class="col-xs-12 achievment-btn-content">
+                    <button type="button" onclick="showTechgigModal()" class="achievment-btn">View Certificate</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xs-12 skill-section">
+            <div class="col-xs-12 col-lg-10 col-lg-offset-2">
+                <div id="barchart_values"></div>
+            </div>
+            <div class="col-xs-12">
+                    <div id="barchart_values_mobile" style="display:none;"></div>
             </div>
         </div>
         
@@ -219,6 +270,59 @@
             </div>
         </div>
 
+        <div id="ccdsapFModal" class="modal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" onClick="closeCcdsapFModal()">&times;</button>
+                        <h4 class="modal-title">CCDSAP Foundation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe style="width:100%; height: 450px;" src="certificates/CCDSAP-F.pdf"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" onClick="closeCcdsapFModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="ccdsapAModal" class="modal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" onClick="closeCcdsapAModal()">&times;</button>
+                        <h4 class="modal-title">CCDSAP Advanced</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe style="width:100%; height: 450px;" src="certificates/CCDSAP-A.pdf"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" onClick="closeCcdsapAModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="techgigModal" class="modal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" onClick="closeTechgigModal()">&times;</button>
+                        <h4 class="modal-title">Techgig Code Gladiators 2018</h4>
+                    </div>
+                    <div class="modal-body">
+                        <iframe style="width:100%; height: 450px;" src="certificates/TechgigCG.pdf"></iframe>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" onClick="closeTechgigModal()">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
@@ -240,4 +344,72 @@
     function closeIcpcModal(){
         $('#icpcModal').hide();
     }
+    function showCcdsapFModal(){
+        $('#ccdsapFModal').show();
+    }
+    function closeCcdsapFModal(){
+        $('#ccdsapFModal').hide();
+    }
+    function showCcdsapAModal(){
+        $('#ccdsapAModal').show();
+    }
+    function closeCcdsapAModal(){
+        $('#ccdsapAModal').hide();
+    }
+    function showTechgigModal(){
+        $('#techgigModal').show();
+    }
+    function closeTechgigModal(){
+        $('#techgigModal').hide();
+    }
+   
+    google.charts.load("current", {packages:["corechart"]});
+    google.charts.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Skill", "Score", { role: "style" } ],
+        ["Data Structures and Algorithms", 8.5, "#b87333"],
+        ["OOPs", 7.0, "silver"],
+        ["HTML 5", 7.5, "gold"],
+        ["CSS 3", 7.0, "color: #e5e4e2"],
+        ["Java", 8.0, "blue"],
+        ["Rest API", 7.5, "green"],
+        ["PHP", 7.0, "orange"],
+        ["Bootstrap", 7.0, "purple"],
+        ["SQL", 7.5, "yellow"],
+        ["NoSQL", 8.0, "pink"],
+        ["Git Version Control", 7.5, "black"],
+        ["AWS", 7, "gray"]
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        title: "Skill Quotient",
+        width: 900,
+        height: 600,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+
+      var options1 = {
+        title: "Skill Quotient",
+        width: '50%',
+        height: 300,
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+
+      var chart = new google.visualization.BarChart(document.getElementById("barchart_values"));
+      var chart1 = new google.visualization.BarChart(document.getElementById("barchart_values_mobile"));
+      chart.draw(view, options);
+      chart1.draw(view, options1);
+  }
+
 </script>
