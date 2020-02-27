@@ -225,6 +225,46 @@ html,body{
 .achievment-card-techgig{
     background-image: url('../media/techgig-bg.jpg');
 }
+.project-section{
+    background: #0a192f;
+}
+.project-card{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 5vw;
+    margin-right:0vw;
+    background: rgba(41, 61, 90, 0.99);
+}
+.project-head{
+    color: rgb(177, 183, 202);
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height:1.5em;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:40px;
+    padding-bottom: 15px;
+    font-family: 'Roboto';
+}
+.project-desc{
+    color: rgb(136, 146, 176);
+    font-size: 1.1em;
+    font-weight: 600;
+    line-height:1.5em;
+    padding:20px; 
+}
+.project-footer{
+    color: rgb(136, 146, 176);
+    font-size: 0.8em;
+    font-weight: 600;
+    line-height:1.5em;
+    padding:20px;
+}
+.project-image{
+    padding-top:40px;
+    padding-bottom:15px;
+    padding-left:20px;
+}
 
 @media(max-width:1200px) {
     .about-header{
