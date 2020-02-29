@@ -191,7 +191,7 @@ html,body{
 .achievment-card{
     padding:0px !important;
     position: relative;
-    margin: 50px;
+    margin: 30px;
     box-shadow: -7px 10px 8px #111;
 }
 .achievment-title{
@@ -284,7 +284,7 @@ html,body{
     text-align: center;
     color: rgb(177, 183, 202);
     font-weight: 600;
-    font-size: 2.2em;
+    font-size: 1.9em;
     line-height:1.5em;
     padding-left:20px;
     padding-right:20px;   
@@ -306,7 +306,7 @@ html,body{
     text-align: center;
     color: rgb(85, 86, 86);
     font-weight: 600;
-    font-size: 2.2em;
+    font-size: 1.9em;
     line-height:1.5em;
     padding-left:20px;
     padding-right:20px;   
