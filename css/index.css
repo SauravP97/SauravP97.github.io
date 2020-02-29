@@ -6,9 +6,10 @@ html,body{
     overflow-x: hidden; 
     font-family: 'Nunito', sans-serif !important;
     overflow-y: scroll;
+    scroll-behavior: smooth;
 }
 .portfolio-header{
-    height: 92px;
+    height: 64px;
     width: 100%;
     background: #111;
     position: fixed !important;
@@ -21,7 +22,7 @@ html,body{
     cursor: pointer;
     display: block;
     color: #FFF;
-    line-height: 92px;
+    line-height: 62px;
     padding: 0 1em;
     text-decoration: none;
     font-size: 18px;
@@ -35,7 +36,7 @@ html,body{
     cursor: pointer;
     display: block;
     color: #FFF !important;
-    line-height: 92px;
+    line-height: 62px;
     padding: 0 1em;
     font-size: 18px;
     font-weight: 600;
@@ -50,8 +51,16 @@ html,body{
 .my-avatar{
     border: 2px solid white;
     border-radius: 50%;
-    width: 70px;
-    margin-top: 10px;
+    width: 55px;
+    margin-top: 5px;
+    margin-left:30px;
+    background: blanchedalmond;
+}
+.my-avatar-big{
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 225px;
+    margin-top: 5px;
     margin-left:30px;
     background: blanchedalmond;
 }
@@ -64,7 +73,7 @@ html,body{
 }
 .screen-1{
     box-shadow: -7px 5px 8px #888888;
-    margin-top: 91px;
+    margin-top: 64px;
 }
 .screen-1:hover{
     box-shadow: -7px 10px 8px #888888;
@@ -84,12 +93,13 @@ html,body{
     margin-bottom: 20px;
 }
 .head-screen-2{
-    font-size: 4.0rem;
+    font-size: 2.0em;
     letter-spacing: 4px;
     font-weight: 600;
     margin-top: 40px;
-    font-family: 'Roboto';
-    text-align:center;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:20px;
 }
 .screen-2{
     margin-top:8px;
@@ -97,13 +107,18 @@ html,body{
     color: #fff;
     text-shadow: 0 1px 4px rgba(0,0,0,0.1);
 }
+.screen-2-container{
+    padding-bottom:60px;
+}
 .desc-screen-2{
     margin-top:20px;
     color: #fff;
-    font-size: 1.375em;
+    font-size: 1.2em;
     line-height:1.5em;
-    text-align:center;
-    margin-bottom:30px;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:20px;
+    padding-bottom:20px;
 }
 .cp-profiles{
     background: #fff;
@@ -140,7 +155,7 @@ html,body{
     color: #222;
     font-weight: 600;
     padding: 0px !important;
-    font-size: 2.0em;
+    font-size: 1.7em;
     line-height:1.5em;
 }
 .side-left-drawer{
@@ -190,7 +205,7 @@ html,body{
 .achievment-description{
     margin-top:20px;
     color: #fff;
-    font-size: 1.375em;
+    font-size: 1.2em;
     line-height:1.5em;
     margin-bottom:30px;
 }
@@ -265,6 +280,71 @@ html,body{
     padding-bottom:15px;
     padding-left:20px;
 }
+.project-container-head{
+    text-align: center;
+    color: rgb(177, 183, 202);
+    font-weight: 600;
+    font-size: 2.2em;
+    line-height:1.5em;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:80px;
+    padding-bottom: 15px;
+}
+.project-container-desc{
+    text-align: center;
+    color: rgb(177, 183, 202);
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height:1.5em;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:20px;
+    padding-bottom:80px;
+}
+.achievments-container-head{
+    text-align: center;
+    color: rgb(85, 86, 86);
+    font-weight: 600;
+    font-size: 2.2em;
+    line-height:1.5em;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:80px;
+    padding-bottom: 15px;
+}
+.achievments-container-desc{
+    text-align: center;
+    color: rgb(85, 86, 86);
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height:1.5em;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:20px;
+    padding-bottom:80px;
+}
+.contact-section{
+    background: rgb(2, 12, 27);
+}
+.contact-container-desc{
+    text-align: center;
+    color: rgb(136,146,176);
+    font-size: 0.9em;
+    line-height:1.5em;
+    padding-left:20px;
+    padding-right:20px;   
+    padding-top:20px;
+    padding-bottom:20px;
+
+}
+.contact-link{
+    color: rgb(136,146,176) !important;
+}
+.contact-link:hover{
+    color: rgb(100, 255, 218) !important;
+    text-decoration: none !important;
+}
 
 @media(max-width:1200px) {
     .about-header{
@@ -283,11 +363,5 @@ html,body{
     }
     .my-avatar{
         margin-left: -20px;
-    }
-    #barchart_values_mobile{
-        display: block !important;
-    }
-    #barchart_values{
-        display: none !important;
     }
 }   
