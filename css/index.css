@@ -5,7 +5,6 @@ html,body{
     padding: 0px;
     overflow-x: hidden; 
     font-family: 'Nunito', sans-serif !important;
-    overflow-y: scroll;
     scroll-behavior: smooth;
 }
 .portfolio-header{
@@ -21,6 +20,7 @@ html,body{
 .phead-component{
     cursor: pointer;
     display: block;
+    text-align: center;
     color: #FFF;
     line-height: 62px;
     padding: 0 1em;
@@ -81,16 +81,17 @@ html,body{
 }
 .coder-head{
     font-size: 4.5rem;
-    font-weight: 600;
-    margin-top: 10%;
+    margin-top: 15%;
     color: #111;
     text-align:center;
+    font-family: 'Cinzel';
 }
 .coder-desc{
     font-size: 18px;
     font-weight: 600;
     text-align:center;
-    margin-bottom: 20px;
+    margin-top:20px;
+    margin-bottom: 40px;
 }
 .head-screen-2{
     font-size: 2.0em;
@@ -345,7 +346,14 @@ html,body{
     color: rgb(100, 255, 218) !important;
     text-decoration: none !important;
 }
-
+.skill-card{
+    padding:40px !important;
+    display: block;
+    text-align: center;
+}
+.skill-image{
+    width:540px;
+}
 @media(max-width:1200px) {
     .about-header{
         display: none !important;
@@ -363,5 +371,12 @@ html,body{
     }
     .my-avatar{
         margin-left: -20px;
+    }
+    .skill-image{
+        width:360px !important;
+    }
+    .skill-card{
+        padding:0px !important;
+        margin-bottom: 20px !important;
     }
 }   
