@@ -20,6 +20,14 @@
 </head>
 
 <body>
+    <div class="introduction-screen">
+        <div style="display:block; text-align:center;" class="col-xs-12">
+            <img class="intro-avatar" src="media/my-avatar-big.jpg">
+        </div>
+        <div style="text-align:center;" class="col-xs-12">
+            Dream | Build | Deploy
+        </div>
+    </div>
     <div class="row">
         <div class="col-xs-12 portfolio-header">
                 <div class="col-lg-3 col-sm-6 col-xs-4 phead-my-avatar">
@@ -522,6 +530,11 @@
 </html>
 
 <script>
+    $(function() {
+        setTimeout(function() {
+                $('.introduction-screen').slideUp("slow");
+            }, 3000);
+    });
     function changeNav() {
         var width = $(".side-left-drawer").width();
         console.log(width);
