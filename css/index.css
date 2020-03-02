@@ -397,6 +397,16 @@ html,body{
     }
 }
 @media(max-width:480px) {
+    .intro-avatar{
+        margin-top:250px;
+        border-radius: 50%;
+        width: 150px;
+        animation: bounce 0.7s infinite alternate;
+        -webkit-animation: bounce 0.7s infinite alternate;
+    }
+    .introduction-screen{
+        font-size: 1.7em !important;
+    }
     .screen-1-pic{
         display: none;
     }
