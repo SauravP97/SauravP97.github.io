@@ -44,10 +44,7 @@ html,body{
 .media-icon{
     padding: 10px;
 }
-.media-icon-fa:hover{
-    color: #666666 !important;
-    transition: all 0.3s;
-}
+
 .my-avatar{
     border: 2px solid white;
     border-radius: 50%;
@@ -387,6 +384,12 @@ html,body{
     }
 }
 
+@media(min-width:1200px) {
+    .media-icon-fa:hover{
+        color: #666666 !important;
+        transition: all 0.3s;
+    }
+}
 @media(max-width:1200px) {
     .about-header{
         display: none !important;
@@ -422,4 +425,4 @@ html,body{
         padding:0px !important;
         margin-bottom: 20px !important;
     }
-}   
+} 
