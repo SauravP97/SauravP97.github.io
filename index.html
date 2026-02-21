@@ -1,593 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Developer - Portfolio</title>
+  <style>
+    /* --- CSS VARIABLES (Color Palette) --- */
+    :root {
+      --bg-body: #fafafa;
+      --bg-white: #ffffff;
+      --bg-neutral-100: #f5f5f5;
+      --bg-neutral-900: #171717;
+      
+      --text-900: #171717;
+      --text-700: #404040;
+      --text-600: #525252;
+      --text-500: #737373;
+      --text-400: #a3a3a3;
+      --text-300: #d4d4d4;
+      
+      --border-100: #f5f5f5;
+      --border-200: #e5e5e5;
+      --border-300: #d4d4d4;
+      
+      --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    }
+
+    /* --- RESET & BASE STYLES --- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
     
-    <meta property=“og:image” content=“https://media.geeksforgeeks.org/auth/profile/het7aq89agjedjf5nqai” />
-    <meta property="og:image:type" content="image/png">
-    <meta property="og:image:width" content="200">
-    <meta property="og:image:height" content="200">
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-900);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+    }
     
-    <title>Saurav Prateek</title>
-    <link href="https://fonts.googleapis.com/css?family=Cinzel&display=swap" rel="stylesheet">
-    <link rel="shortcut icon" href="./media/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    ::selection {
+      background-color: #e5e5e5;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.2s ease;
+    }
+
+    h1, h2, h3, h4 {
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem;
+    }
+    
+    @media (min-width: 768px) {
+      .container { padding: 6rem 1.5rem; }
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      color: var(--text-900);
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-200);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .mb-20 { margin-bottom: 5rem; }
+    .text-mono { font-family: var(--font-mono); }
+    .flex { display: flex; }
+    .items-center { align-items: center; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-4 { gap: 1rem; }
+
+    /* --- HEADER SECTION --- */
+    .header-content {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    @media (min-width: 640px) {
+      .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+      }
+    }
+
+    .header-title { font-size: 2.25rem; margin-bottom: 1rem; font-weight: 800; }
+    @media (min-width: 640px) { .header-title { font-size: 3rem; } }
+    
+    .header-role { font-size: 1.25rem; color: var(--text-600); font-weight: 500; margin-bottom: 1.5rem; }
+    .header-desc { color: var(--text-600); max-width: 36rem; }
+    
+    .profile-photo {
+      width: 6rem;
+      height: 6rem;
+      background-color: var(--border-200);
+      border-radius: 50%;
+      border: 4px solid var(--bg-white);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-400);
+      font-size: 0.875rem;
+      font-weight: 500;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .profile-photo { width: 10rem; height: 10rem; }
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      cursor: pointer;
+    }
+    
+    .btn-primary {
+      background-color: var(--bg-neutral-900);
+      color: var(--bg-white);
+    }
+    .btn-primary:hover { background-color: #262626; }
+    
+    .btn-secondary {
+      background-color: var(--bg-white);
+      color: var(--text-900);
+      border: 1px solid var(--border-200);
+    }
+    .btn-secondary:hover { background-color: var(--bg-neutral-100); }
+
+    /* --- EXPERIENCE TIMELINE --- */
+    .timeline {
+      position: relative;
+      border-left: 1px solid var(--border-200);
+      margin-left: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 768px) { .timeline-item { padding-left: 3rem; } }
+
+    .timeline-logo {
+      position: absolute;
+      left: -1.5rem;
+      top: 0;
+      width: 3rem;
+      height: 3rem;
+      background-color: var(--bg-white);
+      border: 1px solid var(--border-200);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      overflow: hidden;
+      font-weight: 700;
+      font-size: 1.125rem;
+      color: var(--text-400);
+      transition: all 0.2s ease;
+    }
+    
+    .timeline-item:hover .timeline-logo {
+      border-color: var(--border-300);
+      color: var(--text-600);
+    }
+
+    .timeline-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .job-header { display: flex; flex-direction: column; margin-bottom: 0.75rem; gap: 0.25rem; }
+    @media (min-width: 640px) {
+      .job-header { flex-direction: row; justify-content: space-between; align-items: baseline; }
+    }
+    
+    .job-title { font-size: 1.125rem; color: var(--text-900); }
+    .job-company { color: var(--text-400); font-weight: 400; }
+    .job-date {
+      font-size: 0.875rem;
+      color: var(--text-500);
+      background-color: var(--bg-neutral-100);
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.375rem;
+      display: inline-block;
+      width: fit-content;
+    }
+    .job-desc { color: var(--text-600); max-width: 42rem; }
+
+    /* --- CARDS (Projects & Achievements) --- */
+    .card-stack { display: flex; flex-direction: column; gap: 0.8rem; }
+    
+    .card {
+      padding: 1.5rem;
+      border-radius: 1rem;
+      border: 1px solid var(--border-200);
+      background-color: var(--bg-white);
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .card:hover {
+      border-color: var(--border-300);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .card-title { font-size: 1.125rem; transition: color 0.2s ease; }
+    .card:hover .card-title { color: var(--text-600); }
+    .card-desc { color: var(--text-600); font-size: 0.875rem; margin-bottom: 1.5rem; flex-grow: 1; }
+    
+    .icon-links { display: flex; gap: 0.5rem; color: var(--text-400); }
+    .icon-links a:hover { color: var(--text-900); }
+    
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: auto; }
+    .tech-badge {
+      padding: 0.25rem 0.5rem;
+      background-color: var(--bg-body);
+      border: 1px solid var(--border-100);
+      color: var(--text-600);
+      font-size: 0.75rem;
+      border-radius: 0.375rem;
+    }
+
+    /* --- PROJECT CARDS --- */
+    .project-card { gap: 1.25rem; }
+    @media (min-width: 640px) { .project-card { flex-direction: row; gap: 1.5rem; } }
+    .project-image-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      background-color: var(--bg-body); border: 1px solid var(--border-100); border-radius: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-300); flex-shrink: 0; transition: all 0.2s ease; overflow: hidden;
+    }
+    @media (min-width: 640px) { .project-image-placeholder { width: 160px; aspect-ratio: 4/3; } }
+    .card:hover .project-image-placeholder { background-color: var(--bg-neutral-100); color: var(--text-400); }
+    .project-image-placeholder img { width: 100%; height: 100%; object-fit: fill; }
+    .project-content { display: flex; flex-direction: column; flex-grow: 1; }
+
+    /* --- ACHIEVEMENTS --- */
+    .achievement-card { display: flex; gap: 1.25rem; }
+    .trophy-container {
+      width: 3rem;
+      height: 3rem;
+      background-color: var(--bg-body);
+      border: 1px solid var(--border-100);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--text-400);
+      transition: all 0.2s ease;
+    }
+    .card:hover .trophy-container {
+      background-color: var(--bg-neutral-900);
+      border-color: var(--bg-neutral-900);
+      color: var(--bg-white);
+    }
+    .ach-org { font-size: 0.875rem; font-weight: 500; color: var(--text-500); margin-bottom: 0.75rem; }
+    .ach-desc { font-size: 0.875rem; color: var(--text-600); }
+
+    /* --- BLOG, PUBLICATIONS, TALKS --- */
+    .list-header {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-200);
+    }
+    @media (min-width: 640px) {
+      .list-header { flex-direction: row; justify-content: space-between; align-items: baseline; }
+    }
+    .list-header h3 { 
+      margin-bottom: 0; 
+      padding-bottom: 0; 
+      border: none; 
+      font-size: 1.5rem; 
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .list-link { font-size: 0.875rem; font-weight: 500; color: var(--text-500); }
+    .list-link:hover { color: var(--text-900); }
+
+    .list-item { display: flex; flex-direction: column; margin-bottom: 1.5rem; gap: 0.25rem; }
+    @media (min-width: 640px) {
+      .list-item { flex-direction: row; justify-content: space-between; align-items: baseline; }
+    }
+    .list-title { font-size: 1.125rem; font-weight: 700; transition: color 0.2s ease; }
+    .list-item:hover .list-title { color: var(--text-600); }
+    .list-meta { display: flex; gap: 0.75rem; font-size: 0.875rem; color: var(--text-500); flex-shrink: 0; }
+    .meta-dot { display: none; }
+    @media (min-width: 640px) { .meta-dot { display: inline; color: var(--text-300); } }
+
+    /* --- YOUTUBE --- */
+    .playlist-list { display: flex; flex-direction: column; gap: 1rem; margin-bottom: 2.5rem; }
+    
+    .playlist-landscape-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+      background-color: var(--bg-white);
+      border: 1px solid var(--border-200);
+      border-radius: 1rem;
+      transition: all 0.2s ease;
+    }
+    @media (min-width: 640px) {
+      .playlist-landscape-card { flex-direction: row; align-items: center; padding: 1.25rem; gap: 1.5rem; }
+    }
+    .playlist-landscape-card:hover {
+      border-color: var(--border-300);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    .playlist-landscape-image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-color: var(--bg-body);
+      border: 1px solid var(--border-100);
+      border-radius: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-300);
+      transition: all 0.2s ease;
+      flex-shrink: 0;
+    }
+    .playlist-landscape-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    @media (min-width: 640px) {
+      .playlist-landscape-image { width: 240px; }
+    }
+    .playlist-landscape-card:hover .playlist-landscape-image {
+      background-color: var(--bg-neutral-100);
+      color: var(--text-400);
+    }
+    
+    .playlist-title { font-size: 1.125rem; font-weight: 700; color: var(--text-900); transition: color 0.2s ease; margin-bottom: 0.25rem; }
+    .playlist-landscape-card:hover .playlist-title { color: var(--text-600); }
+    .playlist-desc { font-size: 0.875rem; color: var(--text-600); line-height: 1.6; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+    @media (min-width: 640px) { .grid-2 { grid-template-columns: repeat(2, 1fr); } }
+    
+    .video-card {
+      display: block;
+      padding: 1rem;
+      border: 1px solid var(--border-200);
+      border-radius: 1rem;
+      background-color: var(--bg-white);
+      transition: all 0.2s ease;
+    }
+    .video-card:hover { border-color: var(--border-300); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .video-placeholder {
+      aspect-ratio: 16/9;
+      background-color: var(--bg-body);
+      border: 1px solid var(--border-100);
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-300);
+      transition: all 0.2s ease;
+    }
+    .video-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    .video-card:hover .video-placeholder {
+      background-color: var(--bg-neutral-100);
+      color: var(--text-400);
+    }
+    .video-title { font-weight: 700; margin-bottom: 0.5rem; transition: color 0.2s ease; }
+    .video-card:hover .video-title { color: var(--text-600); }
+
+    /* --- LANDSCAPE PLACEHOLDER --- */
+    .landscape-placeholder {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background-color: var(--bg-white);
+      border: 2px dashed var(--border-200);
+      border-radius: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-400);
+      transition: all 0.2s ease;
+      overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      .landscape-placeholder { aspect-ratio: 21/9; }
+    }
+    .landscape-placeholder:hover {
+      background-color: var(--bg-neutral-100);
+      border-color: var(--border-300);
+      color: var(--text-500);
+    }
+    .landscape-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- SKILLS --- */
+    .skills-wrapper { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .skill-pill {
+      padding: 0.5rem 1rem;
+      background-color: var(--bg-white);
+      border: 1px solid var(--border-200);
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-700);
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+    }
+    .skill-pill:hover { border-color: var(--text-900); color: var(--text-900); cursor: default; }
+
+    /* --- FOOTER --- */
+    footer {
+      padding: 2rem 0 3rem 0;
+      border-top: 1px solid var(--border-200);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--text-500);
+    }
+    @media (min-width: 640px) {
+      footer { flex-direction: row; justify-content: space-between; }
+    }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a:hover { color: var(--text-900); }
+
+    /* --- ICONS --- */
+    svg { display: block; }
+  </style>
 </head>
-
 <body>
-    <div class="introduction-screen">
-        <div style="display:block; text-align:center;" class="col-xs-12">
-            <img class="intro-avatar" src="media/my-avatar-big.jpg">
+
+  <main class="container">
+    
+    <!-- BIO SECTION -->
+    <header class="mb-20">
+      <div class="header-content">
+        <div>
+          <h1 class="header-title">Saurav Prateek</h1>
+          <h2 class="header-role">Software Engineer</h2>
+          <p class="header-desc">
+            I have a Bachelors degree in Computer Science Engineering (2015-19) and currently working as a Senior Web Solutions Engineer at <u><a href="https://careersonair.withgoogle.com/events/insidegtech" target="_blank">Google</a></u>. I have a keen interest in Distributed Systems, System Design, Data Structures, Algorithms and Maths.
+          </p>
         </div>
-        <div style="text-align:center;" class="col-xs-12">
-            Dream | Build | Deploy
+        <div class="profile-photo">
+          <!-- Replace the src below with your actual image path or URL -->
+          <img src="./media/profile-pic.jpg" alt="Saurav Prateek">
         </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 portfolio-header">
-                <div class="col-lg-3 col-sm-6 col-xs-4 phead-my-avatar">
-                    <a href="https://sauravp97.github.io">
-                        <img class="my-avatar" src="media/my-avatar.png">
-                    </a>
-                </div>
-                <div class="side-left-drawer">
-                    <a class="side-left-item" href="#cp-profiles">Compete</a>
-                    <a class="side-left-item" href="#achievments-section">Achieve</a>
-                    <a class="side-left-item" href="#skill-section">Skills</a>
-                    <a class="side-left-item" href="#project-section">Project</a>
-                    <a class="side-left-item" href="https://sauravp97.github.io/blogs">Blogs</a>
-                    <a class="side-left-item" target="_blank" href="https://drive.google.com/file/d/1o6BL4S8qhidwkNon058v4-k7ABEFuPuy/view?usp=sharing">Resume</a>
-                </div>
-                <div class="col-lg-6 about-header">
-                    <a href="#cp-profiles">
-                        <div class="col-lg-2 phead-component compete-head-btn">
-                            Compete
-                        </div>
-                    </a>
-                    <a href="#skill-section">
-                        <div class="col-lg-2 phead-component compete-head-btn">
-                            Skills
-                        </div>
-                    </a>
-                    <a href="#achievments-section">
-                        <div class="col-lg-2 phead-component achieve-head-btn">
-                            Achieve
-                        </div>
-                    </a>
-                    <a href="#project-section">
-                        <div class="col-lg-2 phead-component project-head-btn">
-                            Project
-                        </div>
-                    </a>
-                    <a target="_blank" href="https://sauravp97.github.io/blogs">
-                        <div class="col-lg-2 phead-component project-head-btn">
-                            Blogs
-                        </div>
-                    </a>
-                    <a target="_blank" href="https://drive.google.com/file/d/1o6BL4S8qhidwkNon058v4-k7ABEFuPuy/view?usp=sharing">
-                        <div class="col-lg-2 phead-component contact-head-btn">
-                            Resume
-                        </div>
-                    </a>
+      </div>
+      
+      <div class="flex gap-4" style="flex-wrap: wrap;">
+        <a href="mailto:srvptk97@gmail.com" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Get in touch
+        </a>
+        <a href="https://github.com/SauravP97" target="_blank" class="btn btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          GitHub
+        </a>
+        <a href="https://www.linkedin.com/in/saurav-prateek-7b2096140/" target="_blank" class="btn btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+    </header>
 
-                </div>
-                <div class="col-lg-3 col-sm-6 col-xs-8 phead-media-icons">
-                    <div class="col-xs-4 col-lg-2 col-lg-offset-4 media-icon">
-                        <a class="media-icon-fa" style="color:white" target="_blank" href="https://www.linkedin.com/in/saurav-prateek-7b2096140/">
-                            <i class="fa fa-2x fa-linkedin" title="Let's Connect Professionally"></i>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-lg-2 col-lg-offset-1 media-icon">
-                        <a class="media-icon-fa" style="color:white" target="_blank" href="https://github.com/SauravP97">
-                            <i class="fa fa-2x fa-github" title="My github Profile"></i>
-                        </a>
-                    </div>
-                    <div class="col-xs-4 col-lg-3 media-icon">
-                        <a onClick="changeNav()" class="media-icon-fa drawer-down" style="color:white; display:none;">
-                            <i class="fa fa-2x fa-tasks" aria-hidden="true"></i>
-                        </a>
-                    </div>
-                </div>
-        </div>
-
-        <div class="col-xs-12 screen-1">
-            <div class="col-lg-7 col-sm-6 col-xs-12" style="padding:0px !important;">
-                <img class="screen-1-pic" src="media/screen-1.jpg">
-                <img class="screen-1-pic-mobile" style="display:none; width:100%;" src="media/screen-1-mobile.jpg">
-            </div>
-            <div class="col-lg-4 col-sm-6 col-xs-12">
-                <div class="coder-head">
-                    Saurav Prateek
-                </div>
-                <div class="coder-desc">
-                    Currently working as a <br> Software Development Engineer at<br> 
-                    <img title="GeeksForGeeks" style="width:50px; height:50px;" src="media/gfg_icon.png" >
-                </div>
-            </div>
-        </div>
-
-        <div class="col-xs-12 screen-2">
-            <div class="row screen-2-container">
-                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-10 head-screen-2">
-                    About Me
-                </div>
-                <div class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-5 desc-screen-2">
-                    Bonjour! I'm Saurav, a Software Engineer based in Noida,
-                    India who enjoys building things and writing codes.
-                    I work on developing and improving products and services
-                    and also participate in programming challenges.
-                    <br><br>
-                    Shortly after graduating with my Bachelor's Degree in
-                    Computer Science, I joined the engineering team at
-                    GeeksForGeeks where I get to work on a wide variety of interesting
-                    and meaningful projects on a daily basis to which I am really greatful.
-                </div>
-                <div style="display:block; text-align:center;" class="col-xs-offset-1 col-xs-10 col-sm-offset-1 col-sm-3 about-img-screen">
-                    <img class="my-avatar-big" src="media/my-avatar-big.jpg">
-                    
-                </div>
-            </div>
-        </div>
-
-        <div id="cp-profiles" class="col-xs-12 cp-profiles">
-            <div class="row">
-                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
-                    <div class="achievments-container-head">
-                        My Competitive Programming Profile
-                    </div>
-                    <div class="achievments-container-desc">
-                        A competitive environment is always healthy as it
-                        pushes us to solve one extra question by going out of
-                        our comfort zone for a better Rating. So in my free time
-                        I compete here.
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-            <a title="Codechef Profile" target="_blank" href="https://www.codechef.com/users/srvptk">
-            <div class="col-lg-3 col-lg-offset-1 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 cp-card">
-                <div class="cp-card-cover">
-                    <img class="cp-logo-icon" src="media/codechef.svg">
-                    <img style="width:100%;" src="media/codechef-tshirt.jpg">
-                </div>
-                <div class="cp-card-desc">
-                    <div class="cp-card-desc-head">
-                        srvptk (4 Star)
-                        <i class="fa fa-chevron-right" style="float:right; color:#706f6f"></i>
-                    </div>
-                    <div class="cp-card-desc-desc">
-                        I practice competitive programming in my free time
-                        and Codechef is the best place to test my Problem 
-                        Solving skills.
-                    </div>
-                </div>
-            </div>
-            </a>
-
-            <a title="Leetcode Profile" target="_blank" href="https://leetcode.com/srvptk97/">
-                <div class="col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 cp-card">
-                    <div class="cp-card-cover" style="background: black;">
-                        <img style="width:100%; margin-top:16%; margin-bottom:16%; padding: 10px;" src="media/leetcode-icon.png">
-                    </div>
-                    <div class="cp-card-desc">
-                        <div class="cp-card-desc-head">
-                            srvptk97 (Rating: 1899)
-                            <i class="fa fa-chevron-right" style="float:right; color:#706f6f"></i>
-                        </div>
-                        <div class="cp-card-desc-desc">
-                            I have an overall rating of 1899 and a World Ranking
-                            of 7,574 out of 1,48,398 participants.
-                        </div>
-                    </div>
-                </div>
-            </a>
-
-            <a title="Techgig Profile" target="_blank" href="https://www.techgig.com/sauravprateek">
-                <div class="col-lg-3 col-lg-offset-0 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 cp-card">
-                    <div class="cp-card-cover" style="background: black;">
-                        <img class="cp-logo-icon" src="media/techgig.svg">
-                        <img style="width:100%;" src="media/techgig-logo.jpg">
-                    </div>
-                    <div class="cp-card-desc">
-                        <div class="cp-card-desc-head">
-                            sauravprateek (Ranking: 106)
-                            <i class="fa fa-chevron-right" style="float:right; color:#706f6f"></i>
-                        </div>
-                        <div class="cp-card-desc-desc">
-                            I have a World Ranking of 106 among more 
-                            than 2 lakh users and an overall skill quotient of 99.97%.
-                        </div>
-                    </div>
-                </div>
-            </a>
-            </div>
-
-            <div class="row">
-            <a title="Google Profile" target="_blank" href="https://drive.google.com/file/d/192GMrjWz806q-e9LZKV1uSiytWy85eWa/view?usp=sharing">
-                <div class="col-lg-3 col-lg-offset-1 col-sm-6 col-sm-offset-3 col-xs-8 col-xs-offset-2 cp-card">
-                    <div class="cp-card-cover">
-                        <img class="cp-logo-icon" style="width:55px !important;" src="media/google.png">
-                        <img style="width:100%;" src="media/google-profile.png">
-                    </div>
-                    <div class="cp-card-desc">
-                        <div class="cp-card-desc-head">
-                            srvptk97
-                            <i class="fa fa-chevron-right" style="float:right; color:#706f6f"></i>
-                        </div>
-                        <div class="cp-card-desc-desc">
-                            This is my Google Coding Competitions profile
-                            having records of my participated contests like
-                            Kickstart, Codejam, HashCode etc.
-                        </div>
-                    </div>
-                </div>
-            </a>
-            </div>
-        </div>
-
-        <div id="achievments-section" class="col-xs-12 achievments-section">
-            <div class="row">
-                <div class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3">
-                    <div class="achievments-container-head">
-                        My Achievments
-                    </div>
-                    <div class="achievments-container-desc">
-                        A lot of opportunites are waiting to be explored
-                        the thing is, are we ready to see the bigger picture.
-                        Below are some of the opportunities which I explored during my
-                        Engineering studies and trying to achieve more.
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-10 col-sm-8 col-sm-offset-2 achievment-card achievment-card-icpc">
-                <div class="col-sm-10 col-xs-12 achievment-content">
-                    <div class="col-xs-12 col-sm-10 achievment-title">
-                        ACM ICPC 2018
-                    </div>
-                    <div class="col-xs-12 col-sm-10 achievment-description">
-                        Participated in one of the World's Largest Competitive
-                        Programming Competition ACM ICPC in 2018. Our team Optimize
-                        Prime went for Asia Regionals which was held in Hindustan
-                        University Chennai. The contest was full of programming enthusiasts,
-                        limited edition tshirts and last but not the least balloons.
-                    </div>
-                </div>
-                <div class="col-xs-12 achievment-btn-content">
-                    <button type="button" onclick="showIcpcModal()" class="achievment-btn">View Certificate</button>
-                </div>
-            </div>
-
-            <div class="col-xs-10 col-sm-8 col-sm-offset-2 achievment-card achievment-card-ccdsap">
-                <div class="col-sm-10 col-xs-12 achievment-content">
-                    <div class="col-xs-12 col-sm-10 achievment-title">
-                        CCDSAP (Advanced and Foundation)
-                    </div>
-                    <div class="col-xs-12 col-sm-10 achievment-description">
-                        I have passed the Codechef Certified Data Structures and 
-                        Algorithms Programme both Foundation and  Advanced Level,
-                        it's a certification provided by codechef which demonstrates
-                        someone's grasp over DSA. Along with certification I also got the 
-                        opportunity to be mentioned in the 
-                        <a target="_blank" href="https://www.codechef.com/certification/data-structures-and-algorithms/certified-programmers">
-                        Hall of Certified Programmers</a>.
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-5 col-lg-3 achievment-btn-content">
-                    <button type="button" onclick="showCcdsapFModal()" class="achievment-btn">Foundation Certificate</button>
-                </div>
-                <div class="col-xs-12 col-sm-5 col-lg-3 achievment-btn-content">
-                    <button type="button" onclick="showCcdsapAModal()" class="achievment-btn">Advanced Certificate</button>
-                </div>
-            </div>
-
-            <div class="col-xs-10 col-sm-8 col-sm-offset-2 achievment-card achievment-card-techgig">
-                <div class="col-sm-10 col-xs-12 achievment-content">
-                    <div class="col-xs-12 col-sm-10 achievment-title">
-                        Techgig Code Gladiators 2018 Finals
-                    </div>
-                    <div class="col-xs-12 col-sm-10 achievment-description">
-                        I have been qualified for the Final Round of Techgig 
-                        Code Gladiators 2018, and secured an overall rank of 47
-                        among across 300 finalist. The contest recieved an overall 2.5 lakh
-                        participants and the finals were held in Mumbai.
-                    </div>
-                </div>
-                <div class="col-xs-12 achievment-btn-content">
-                    <button type="button" onclick="showTechgigModal()" class="achievment-btn">View Certificate</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div id="skill-section" class="col-xs-12 skill-section">
-            <div class="row">
-                <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
-                    <div class="achievments-container-head">
-                        My Skills
-                    </div>
-                    <div class="achievments-container-desc">
-                        These are the technologies, languages and skills
-                        in which I hold some hands on experience.  
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-12 col-lg-6 skill-card">
-                <img class="skill-image" src="media/skill-pl.jpg">
-            </div>
-            <div class="col-xs-12 col-lg-6 skill-card">
-                <img class="skill-image" src="media/skill-dev.jpg">
-            </div>
-            <div class="col-xs-12 skill-card">
-                <img class="skill-image" src="media/skill-cp.jpg">
-            </div>
-        </div>
-
-        <div id="project-section" class="col-xs-12 project-section">
-            <div class="col-sm-10 col-sm-offset-1 project-container">
-                <div class="row">
-                    <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-lg-6 col-lg-offset-3">
-                        <div class="project-container-head">
-                            My Projects
-                        </div>
-                        <div class="project-container-desc">
-                            I have mentioned some of my Work which I did
-                            in my B.Tech course period and some interesting
-                            things which I am getting to learn in my day Job.
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                <div class="col-xs-11 col-sm-10 col-lg-5 project-card">
-                    <div class="col-xs-8 project-head">
-                        Transition to Amazon Dynamo DB
-                    </div>
-                    <div class="col-xs-4 project-image">
-                        <img style="width:50px;" src="media/dynamo.png">
-                    </div>
-                    <div class="col-xs-12 project-desc">
-                        At my job I was assigned a really interesting project of
-                        moving the entire database from RDS to a No SQL structure.
-                        Used Amazon Dynamo DB for this purpose and learned the concepts of
-                        Keys, Indexes, GSIs, LSIs, Sharding and Overloading of Keys and many
-                        more. Got to know various use cases where a No Sql design can be much
-                        effiecint and scale well.
-                    </div>
-                    <div class="col-xs-8 project-footer">
-                        AWS | DynamoDB | RDS
-                    </div>
-                </div>
-            
-                <div class="col-xs-11 col-sm-10 col-lg-5 project-card">
-                    <div class="col-xs-8 project-head">
-                        Earthquake Intensity Calculator
-                    </div>
-                    <div class="col-xs-4 project-image">
-                            <img style="width:50px;" src="media/imd-project.png">
-                    </div>
-                    <div class="col-xs-12 project-desc">
-                        During my first internship at India Meteorological Department, I was
-                        assigned the project of building a web application which could fetch
-                        the details of an earthquake activity [long, lat, height, depth, magnitude]
-                        and could plot a heatmap over the map of India for a better visualization of 
-                        the incident. I used Google Maps API to build the project along with a File Storage System. <br>
-                        <a href="https://github.com/SauravP97/Intensity_Calculate" target="_blank" title="Github Repo">Viw on Github</a>
-                    </div>
-                    <div class="col-xs-12 project-footer">
-                        API | HTML5 | CSS3 | Google | Maps | HeatMap
-                    </div>
-                </div>
-                </div>
-            
-                <div class="row">
-                <div class="col-xs-11 col-sm-10 col-lg-5 project-card">
-                    <div class="col-xs-8 project-head">
-                        Dummy Search Engine
-                    </div>
-                    <div class="col-xs-4 project-image">
-
-                    </div>
-                    <div class="col-xs-12 project-desc">
-                        Inspired by the course: 'How to build a Search Engine' which I did
-                        on udacity, I decided to build my own dummy search engine. I developed a 
-                        web crawler in Python which could scrap all the links from a particular web page.
-                        I initially used it to scrap all the sites which provides courses online. One 
-                        could enter the desired course Name and it will return the related courses. I also
-                        designed my ranking algorithm to rank result items in descending order of their relevance
-                        using string matching algorithms.
-                    </div>
-                    <div class="col-xs-12 project-footer">
-                        Python | HTML5 | CSS3 | Bootstrap | MVC
-                    </div>
-                </div>
-
-                <div class="col-xs-11 col-sm-10 col-lg-5 project-card">
-                    <div class="col-xs-8 project-head">
-                        Puzzle 8
-                    </div>
-                    <div class="col-xs-4 project-image">
-                        <img style="width:50px;" src="media/puzzle8.jpg">
-                    </div>
-                    <div class="col-xs-12 project-desc">
-                        It was a semester end project which I developed on android.
-                        Developed an Android 8 Puzzle Game which can be played through Voice Commands.
-                        I also implemented a feature to control the difficulty of the game by varying the
-                        number of swaps made in the original sorted puzzle to produce a new solvable puzzle.<br>
-                        <a href="https://github.com/SauravP97/Puzzle8" target="_blank" title="Github Repo">Viw on Github</a>
-                    </div>
-                    <div class="col-xs-12 project-footer">
-                        Android | XML | Java
-                    </div>
-                </div>
-                </div>
-
-                <div class="row">
-                <div class="col-xs-11 col-sm-10 col-lg-5 project-card">
-                    <div class="col-xs-8 project-head">
-                        Notes
-                    </div>
-                    <div class="col-xs-4 project-image">
-                        <img style="width:40px;" src="media/notes.png">
-                    </div>
-                    <div class="col-xs-12 project-desc">
-                        It was also a semester end project which I developed on android.
-                        I developed an Android Application which allows the user to save
-                        information or temporary data which can be required
-                        later. I implemented SQL Lite as the Database.<br>
-                        <a href="https://github.com/SauravP97/Notes" target="_blank" title="Github Repo">Viw on Github</a>
-                    </div>
-                    <div class="col-xs-12 project-footer">
-                        Android | XML | Java | SQL-Lite
-                    </div>
-                </div>
-                </div>
-
-            </div>
-        </div>
-
-        <div id="contact-section" class="col-xs-12 contact-section">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="contact-container-desc">
-                        <a class="contact-link" target="_blank" href="https://github.com/SauravP97/SauravP97.github.io">
-                            Designed & Built by Saurav Prateek <br>
-                            srvptk97@gmail.com
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- EXPERIENCE SECTION -->
+    <section class="mb-20">
+      <h3 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+        Experience
+      </h3>
+      
+      <div class="timeline">
         
-        <div id="icpcModal" class="modal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" onClick="closeIcpcModal()">&times;</button>
-                        <h4 class="modal-title">ACM ICPC</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img style="width:100%;" src="certificates/acm-icpc.png">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onClick="closeIcpcModal()">Close</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Job 1 -->
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <!-- Replace the src below with the actual company logo URL -->
+            <img src="./media/google.png" alt="Google India">
+          </div>
+          <div class="job-header">
+            <h4 class="job-title">Senior Web Solutions Engineer (L5) <span class="job-company">at Google, India</span></h4>
+            <span class="job-date text-mono">2025 - Present</span>
+          </div>
+          <p class="job-desc">Working in the gTech Ads - TAI (Tools Automation and Infrastructure) team as an L5 individual contributor and Leading Headroom tool that enables Video Specialists across LCS and GCS to perform video headroom planning for their book of business using historical data from their advertiser.</p>
         </div>
 
-        <div id="ccdsapFModal" class="modal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" onClick="closeCcdsapFModal()">&times;</button>
-                        <h4 class="modal-title">CCDSAP Foundation</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img style="width:100%;" src="certificates/ccdsap-foundation.png">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onClick="closeCcdsapFModal()">Close</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Job 2 -->
+        <div class="timeline-item">
+          <div class="timeline-logo">
+             <!-- Replace the src below with the actual company logo URL -->
+             <img src="./media/google.png" alt="Google India">
+          </div>
+          <div class="job-header">
+            <h4 class="job-title">Web Solutions Engineer II (L4) <span class="job-company">at Google, India</span></h4>
+            <span class="job-date text-mono">2022 - 2025</span>
+          </div>
+          <p class="job-desc">Working in the gTech-TDA (Tools Development and Automation) team as an L4 individual contributor and leading the development of multiple tools used by the Sales and Business team to automate and find insights in the gTech Ads ecosystem</p>
         </div>
 
-        <div id="ccdsapAModal" class="modal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" onClick="closeCcdsapAModal()">&times;</button>
-                        <h4 class="modal-title">CCDSAP Advanced</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img style="width:100%;" src="certificates/ccdsap-advanced.png">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onClick="closeCcdsapAModal()">Close</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Job 3 -->
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <!-- Replace the src below with the actual company logo URL -->
+            <img src="./media/google.png" alt="Google India">
+          </div>
+          <div class="job-header">
+            <h4 class="job-title">Web Solutions Engineer I (L3) <span class="job-company">at Google, India</span></h4>
+            <span class="job-date text-mono">2021 - 2022</span>
+          </div>
+          <p class="job-desc">Worked in the gTech-TDA (Tools Development and Automation) team as an L3 Individual Contributor. Authored multiple RPCs to support the data import from the customer’s Google Ads Account. The data involved multiple Campaigns, Ad-Groups and other ads entities.
+          Developed a recursion and back-tracking based solution to support the real-time generation of Product Groups (a google ads-entity) in bulk.</p>
         </div>
 
-        <div id="techgigModal" class="modal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" onClick="closeTechgigModal()">&times;</button>
-                        <h4 class="modal-title">Techgig Code Gladiators 2018</h4>
-                    </div>
-                    <div class="modal-body">
-                        <img style="width:100%;" src="certificates/techgig-cg.png">
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" onClick="closeTechgigModal()">Close</button>
-                    </div>
-                </div>
-            </div>
+        <!-- Job 4 -->
+        <div class="timeline-item">
+          <div class="timeline-logo">
+            <!-- Replace the src below with the actual company logo URL -->
+            <img src="./media/geeksforgeeks_logo.jpeg" alt="GFG">
+          </div>
+          <div class="job-header">
+            <h4 class="job-title">Software Engineer (SDE 1) <span class="job-company">at GeeksforGeeks</span></h4>
+            <span class="job-date text-mono">2019 - 2021</span>
+          </div>
+          <p class="job-desc">Worked on Amazon Dynamo DB built scalable architecture in No SQL design. Explored relational model access patterns and came up with a reasonable no sql design for the same. Learned to read through matrix and designed an architecture which could serve the query in millisecond order of time along with being cost efficient.</p>
         </div>
-    </div>
+
+      </div>
+    </section>
+
+    <!-- SELECTED WORK SECTION -->
+    <section class="mb-20">
+      <h3 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        Personal Projects
+      </h3>
+      <div class="card-stack">
+        
+        <!-- Project 1 -->
+        <div class="card project-card">
+          <div class="project-image-placeholder">
+            <img src="./media/tiny-story.png" alt="Reproducing TinyStories small language models (SLM)" />
+          </div>
+          <div class="project-content">
+            <div class="card-header">
+              <h4 class="card-title">Reproducing TinyStories small language models (SLM)</h4>
+              <div class="icon-links">
+                <a href="https://github.com/SauravP97/tiny-stories-hf" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+              </div>
+            </div>
+            <p class="card-desc">This repository contains a reproduction of the TinyStories language models described in the paper <u><a href="https://arxiv.org/abs/2305.07759" target="_blank">"TinyStories: How Small Can Language Models Be and Still Speak Coherent English?"</a></u> by Ronen Eldan and Yuanzhi Li.</p>
+            <div class="tech-stack text-mono">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Jupyter Notebook</span>
+              <span class="tech-badge">Deep Neural Networks</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="card project-card">
+          <div class="project-image-placeholder">
+            <img src="./media/toy-transformer-loss.png" alt="Toy-Transformer (decoder-only)" />
+          </div>
+          <div class="project-content">
+            <div class="card-header">
+              <h4 class="card-title">Toy-Transformer (decoder-only)</h4>
+              <div class="icon-links">
+                <a href="https://github.com/SauravP97/toy-transformer" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+              </div>
+            </div>
+            <p class="card-desc">A toy <u><a href="https://en.wikipedia.org/wiki/Transformer_(deep_learning)" target="_blank">Transformer</a></u> model (0.21M parameters)implementation from scratch! If you have a block of text on which you want to train a transformer model and let the model generate text afterwards, then you can use this repo to achieve all of it on your local machine without a GPU.</p>
+            <div class="tech-stack text-mono">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">Deep Neural Networks</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="card project-card">
+          <div class="project-image-placeholder">
+            <img src="./media/deep-research-seq.png" alt="Deep Researcher: Sequential Plan Reflection and Candidates Crossover" />
+          </div>
+          <div class="project-content">
+            <div class="card-header">
+              <h4 class="card-title">Deep Researcher: Reflect Evolve</h4>
+              <div class="icon-links">
+                <a href="https://github.com/SauravP97/deep-researcher-reflect-evolve" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+              </div>
+            </div>
+            <p class="card-desc">Deep Researcher is an advanced autonomous agent architecture designed to generate detailed, PhD-level research reports on complex topics. This system utilizes Sequential Research Plan Refinement and Candidates Crossover.</p>
+            <div class="tech-stack text-mono">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">LangChain</span>
+              <span class="tech-badge">Google GenAI</span>
+              <span class="tech-badge">Deep Research</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="card project-card">
+          <div class="project-image-placeholder">
+            <img src="./media/langpost-img.png" alt="Deep Researcher: Sequential Plan Reflection and Candidates Crossover" />
+          </div>
+          <div class="project-content">
+            <div class="card-header">
+              <h4 class="card-title">LangPost - AI Agent that creates a Linkedin Post</h4>
+              <div class="icon-links">
+                <a href="https://github.com/SauravP97/LangPost" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+              </div>
+            </div>
+            <p class="card-desc">LangPost is an AI agent that creates a Linkedin post from a Linkedin newsletter article or any other blog post. It utilizes the concept of Few Shot encoding.</p>
+            <div class="tech-stack text-mono">
+              <span class="tech-badge">TypeScript</span>
+              <span class="tech-badge">LangChain</span>
+              <span class="tech-badge">LangGraph</span>
+              <span class="tech-badge">AI Engineering</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="card project-card">
+          <div class="project-image-placeholder">
+            <img src="./media/static-dra.png" alt="Static Deep Research Agent" />
+          </div>
+          <div class="project-content">
+            <div class="card-header">
+              <h4 class="card-title">Static Deep Research Agent (Static-DRA)</h4>
+              <div class="icon-links">
+                <a href="https://github.com/SauravP97/Static-Deep-Research" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+              </div>
+            </div>
+            <p class="card-desc">A configurable and hierarchical tree-based static Deep Research Agent designed to overcome the limitations of standard RAG pipelines for complex, multi-turn research tasks by utilizing a static workflow governed by two user-tunable parameters: Depth and Breadth.</p>
+            <div class="tech-stack text-mono">
+              <span class="tech-badge">Python</span>
+              <span class="tech-badge">LangChain</span>
+              <span class="tech-badge">Deep Research</span>
+              <span class="tech-badge">AI Engineering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED TALKS SECTION -->
+    <section class="mb-20">
+      <h3 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+        Featured Talks
+      </h3>
+      <div class="grid-2">
+        
+        <div class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/mongodb-microsoft.JPG" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Design Patterns and Data Modeling in MongoDB</h4>
+          <p class="list-link">MongoDB Connect @ Microsoft, Noida &bull; 2025</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/gdg-iit-25.jpeg" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Optimizing Your Agentic Workflows with Parallel Execution</h4>
+          <p class="list-link">GDG Cloud Noida @ IIT Delhi &bull; 2025</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/hack-a-gtech.jpeg" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Presenting our work on 'AI Powered Request Workflows'</h4>
+          <p class="list-link">Hack-a-gTech @ Google Sunnyvale, California &bull; 2025</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/devtron.jpeg" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Building and Deploying your Graph database using Neo4j</h4>
+          <p class="list-link">CNCG, Gurugram - Devtron Inc &bull; 2024</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/iitd-24.jpeg" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Databases and related optimizations</h4>
+          <p class="list-link">GDG Cloud Noida @ IIT Delhi &bull; 2024</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/tensorflow-js.jpeg" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Introduction to TensorFlow.js</h4>
+          <p class="list-link">Bennett University, Noida &bull; 2024</p>
+        </div>
+
+        <div style="display: none;" class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/action-ai-conf.jpeg" alt="Talk Thumbnail">
+          </div>
+          <h4 class="video-title">Panel Discussion at Action AI Conference</h4>
+          <p class="list-link">Action AI Conference, New Delhi &bull; 2024</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- YOUTUBE SECTION -->
+    <section class="mb-20">
+      <div class="list-header">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
+          YouTube
+        </h3>
+        <a href="#" class="list-link" target="_blank">Visit Channel &rarr;</a>
+      </div>
+
+      <div class="playlist-list">
+        
+        <!-- Playlist 1 -->
+        <a href="#" class="playlist-landscape-card" target="_blank">
+          <div class="playlist-landscape-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/><path d="m16 12 5 3-5 3v-6z"/></svg>
+            <!-- <img src="your-playlist-thumbnail.jpg" alt="Playlist Thumbnail"> -->
+          </div>
+          <div>
+            <h4 class="playlist-title">Machine Learning Zero to Hero</h4>
+            <p class="list-link" style="margin-bottom: 0.5rem;">12 Videos &bull; Updated 2 months ago</p>
+            <p class="playlist-desc">A comprehensive guide starting from the absolute basics of neural networks all the way to building modern transformer models like GPT from scratch.</p>
+          </div>
+        </a>
+
+        <!-- Playlist 2 -->
+        <a href="#" class="playlist-landscape-card" target="_blank">
+          <div class="playlist-landscape-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/><path d="m16 12 5 3-5 3v-6z"/></svg>
+            <!-- <img src="your-playlist-thumbnail.jpg" alt="Playlist Thumbnail"> -->
+          </div>
+          <div>
+            <h4 class="playlist-title">React Server Components</h4>
+            <p class="list-link" style="margin-bottom: 0.5rem;">8 Videos &bull; Updated 5 months ago</p>
+            <p class="playlist-desc">Deep diving into the new React architecture, understanding server vs client boundaries, and building highly performant applications.</p>
+          </div>
+        </a>
+        
+      </div>
+
+      <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-900);">Popular Uploads</h4>
+      <div class="grid-2">
+        
+        <a href="#" class="video-card">
+          <div class="video-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; margin-left: 0.25rem;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          </div>
+          <h4 class="video-title">Deep Dive into Large Language Models</h4>
+          <p class="list-link">120K views &bull; 2 months ago</p>
+        </a>
+
+        <a href="#" class="video-card">
+          <div class="video-placeholder">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; margin-left: 0.25rem;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+          </div>
+          <h4 class="video-title">Let's build GPT: from scratch, in code</h4>
+          <p class="list-link">450K views &bull; 1 year ago</p>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="mb-20">
+      <h3 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
+        Awards & Achievements
+      </h3>
+      <div class="card" style="gap: 1.5rem;">
+        
+        <!-- Achievement 1 -->
+        <div style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-200);">
+          <div class="job-header" style="margin-bottom: 0.25rem;">
+            <h4 class="card-title">Top Open Source Contributor</h4>
+            <span class="job-date text-mono">2024</span>
+          </div>
+          <p class="ach-org" style="margin-bottom: 0.5rem;">GitHub Global Reach</p>
+          <p class="ach-desc" style="margin-bottom: 0.75rem;">Recognized among the top 1% of contributors worldwide for significant contributions to the React and Node.js ecosystems.</p>
+          <a href="#" class="list-link" style="display: inline-flex; align-items: center; gap: 0.25rem;" target="_blank">
+            View Award 
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          </a>
+        </div>
+
+        <!-- Achievement 2 -->
+        <div>
+          <div class="job-header" style="margin-bottom: 0.25rem;">
+            <h4 class="card-title">Best Innovation Award</h4>
+            <span class="job-date text-mono">2023</span>
+          </div>
+          <p class="ach-org" style="margin-bottom: 0.5rem;">TechNova Annual Hackathon</p>
+          <p class="ach-desc" style="margin-bottom: 0.75rem;">Led the winning team in developing an AI-driven accessibility tool that automatically adds semantic HTML to legacy codebases.</p>
+          <a href="#" class="list-link" style="display: inline-flex; align-items: center; gap: 0.25rem;" target="_blank">
+            View Award 
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section class="mb-20">
+      <h3 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+        Publications
+      </h3>
+      <div class="card-stack" style="gap: 2rem;">
+        <div>
+          <a href="#" class="list-title" style="display: block; font-size: 1.125rem;">Scaling Micro-Frontends in Enterprise Applications</a>
+          <p class="ach-desc" style="margin-top: 0.25rem;">Alex Developer, Sarah Smith</p>
+          <p class="list-link" style="margin-top: 0.25rem;">Journal of Software Engineering &bull; 2023</p>
+        </div>
+        <div>
+          <a href="#" class="list-title" style="display: block; font-size: 1.125rem;">A Comparative Study of React and Next.js Performance</a>
+          <p class="ach-desc" style="margin-top: 0.25rem;">Alex Developer</p>
+          <p class="list-link" style="margin-top: 0.25rem;">WebDev Conference Proceedings &bull; 2022</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="mb-20">
+      <div class="list-header">
+        <h3>
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          Blog & Newsletter
+        </h3>
+        <a href="#" class="list-link">Subscribe &rarr;</a>
+      </div>
+      <div>
+        <a href="#" class="list-item group">
+          <h4 class="list-title">Why I stopped using heavy CSS frameworks</h4>
+          <div class="list-meta text-mono">
+            <span>Oct 12, 2025</span>
+            <span class="meta-dot">&bull;</span>
+            <span>5 min read</span>
+          </div>
+        </a>
+        <a href="#" class="list-item group">
+          <h4 class="list-title">A practical guide to React Server Components</h4>
+          <div class="list-meta text-mono">
+            <span>Aug 28, 2025</span>
+            <span class="meta-dot">&bull;</span>
+            <span>8 min read</span>
+          </div>
+        </a>
+        <a href="#" class="list-item group">
+          <h4 class="list-title">My journey building the Aura E-Commerce Platform</h4>
+          <div class="list-meta text-mono">
+            <span>Jun 04, 2025</span>
+            <span class="meta-dot">&bull;</span>
+            <span>12 min read</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- LANDSCAPE IMAGE PLACEHOLDER -->
+    <section class="mb-20">
+      <div class="landscape-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.75rem;"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
+        <span style="font-size: 0.875rem; font-weight: 500;">Featured Landscape Image</span>
+        
+        <!-- To use a real image, uncomment the img tag below and replace the src -->
+        <!-- <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Featured Landscape" /> -->
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="mb-20">
+      <h3 class="section-title">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+        Skills & Technologies
+      </h3>
+      <div class="skills-wrapper">
+        <span class="skill-pill">JavaScript (ES6+)</span>
+        <span class="skill-pill">TypeScript</span>
+        <span class="skill-pill">React</span>
+        <span class="skill-pill">Next.js</span>
+        <span class="skill-pill">Node.js</span>
+        <span class="skill-pill">Express</span>
+        <span class="skill-pill">Python</span>
+        <span class="skill-pill">SQL</span>
+        <span class="skill-pill">PostgreSQL</span>
+        <span class="skill-pill">MongoDB</span>
+        <span class="skill-pill">Tailwind CSS</span>
+        <span class="skill-pill">AWS</span>
+        <span class="skill-pill">Docker</span>
+        <span class="skill-pill">Git/GitHub</span>
+        <span class="skill-pill">GraphQL</span>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <p>&copy; <span id="current-year"></span> Alex Developer. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="mailto:hello@example.com">Email</a>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- --- JAVASCRIPT --- -->
+  <script>
+    // Automatically update the copyright year in the footer
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>
-
-<script>
-    $(function() {
-        setTimeout(function() {
-                $('.introduction-screen').fadeOut("slow");
-            }, 3000);
-    });
-
-    $(document).click(function(e) {
-	    if (!$(e.target).is('.side-left-drawer') && !$(e.target).is('.fa-tasks')) {
-    	    $(".side-left-drawer").width(0);   
-        }
-    });
-
-    function changeNav() {
-        var width = $(".side-left-drawer").width();
-        //console.log(width);
-        if(width == 0){
-            $(".side-left-drawer").width(250);
-        }
-        else{
-            $(".side-left-drawer").width(0);
-        }
-    }
-    function showIcpcModal(){
-        $('#icpcModal').show();
-    }
-    function closeIcpcModal(){
-        $('#icpcModal').hide();
-    }
-    function showCcdsapFModal(){
-        $('#ccdsapFModal').show();
-    }
-    function closeCcdsapFModal(){
-        $('#ccdsapFModal').hide();
-    }
-    function showCcdsapAModal(){
-        $('#ccdsapAModal').show();
-    }
-    function closeCcdsapAModal(){
-        $('#ccdsapAModal').hide();
-    }
-    function showTechgigModal(){
-        $('#techgigModal').show();
-    }
-    function closeTechgigModal(){
-        $('#techgigModal').hide();
-    }
-</script>
