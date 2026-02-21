@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Alex Developer - Portfolio</title>
+  <title>Saurav Prateek</title>
   <style>
     /* --- CSS VARIABLES (Color Palette) --- */
     :root {
@@ -276,25 +276,21 @@
     .project-content { display: flex; flex-direction: column; flex-grow: 1; }
 
     /* --- ACHIEVEMENTS --- */
-    .achievement-card { display: flex; gap: 1.25rem; }
-    .trophy-container {
-      width: 3rem;
-      height: 3rem;
-      background-color: var(--bg-body);
-      border: 1px solid var(--border-100);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      color: var(--text-400);
-      transition: all 0.2s ease;
+    .award-item { display: flex; flex-direction: column; gap: 1rem; transition: all 0.2s ease; }
+    @media (min-width: 640px) { .award-item { flex-direction: row; gap: 1.5rem; } }
+    
+    .award-image-placeholder {
+      width: 100%; aspect-ratio: 16/9;
+      background-color: var(--bg-body); border: 1px solid var(--border-100); border-radius: 0.5rem;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-300); flex-shrink: 0; transition: all 0.2s ease; overflow: hidden;
     }
-    .card:hover .trophy-container {
-      background-color: var(--bg-neutral-900);
-      border-color: var(--bg-neutral-900);
-      color: var(--bg-white);
-    }
+    @media (min-width: 640px) { .award-image-placeholder { width: 160px; aspect-ratio: 4/3; } }
+    .award-item:hover .award-image-placeholder { background-color: var(--bg-neutral-100); color: var(--text-400); }
+    .award-image-placeholder img { width: 100%; height: 100%; object-fit: cover; }
+    
+    .award-content { display: flex; flex-direction: column; flex-grow: 1; justify-content: center; }
+
     .ach-org { font-size: 0.875rem; font-weight: 500; color: var(--text-500); margin-bottom: 0.75rem; }
     .ach-desc { font-size: 0.875rem; color: var(--text-600); }
 
@@ -426,7 +422,7 @@
       width: 100%;
       aspect-ratio: 16/9;
       background-color: var(--bg-white);
-      border: 2px dashed var(--border-200);
+      border: 1px var(--border-200);
       border-radius: 1rem;
       display: flex;
       flex-direction: column;
@@ -779,34 +775,44 @@
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></svg>
           YouTube
         </h3>
-        <a href="#" class="list-link" target="_blank">Visit Channel &rarr;</a>
+        <a href="https://www.youtube.com/@saurav_prateek_" class="list-link" target="_blank">Visit Channel &rarr;</a>
       </div>
 
       <div class="playlist-list">
         
         <!-- Playlist 1 -->
-        <a href="#" class="playlist-landscape-card" target="_blank">
+        <a href="https://www.youtube.com/playlist?list=PL3tZ_eA1QJsyJxXnpg69McGc9xdsy3j_Z" class="playlist-landscape-card" target="_blank">
           <div class="playlist-landscape-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/><path d="m16 12 5 3-5 3v-6z"/></svg>
-            <!-- <img src="your-playlist-thumbnail.jpg" alt="Playlist Thumbnail"> -->
+            <img src="./media/rag-playlist.jpg" alt="Playlist Thumbnail">
           </div>
           <div>
-            <h4 class="playlist-title">Machine Learning Zero to Hero</h4>
-            <p class="list-link" style="margin-bottom: 0.5rem;">12 Videos &bull; Updated 2 months ago</p>
-            <p class="playlist-desc">A comprehensive guide starting from the absolute basics of neural networks all the way to building modern transformer models like GPT from scratch.</p>
+            <h4 class="playlist-title">RAG and LangChain | Building multi-agent workflow in LangGraph</h4>
+            <p class="list-link" style="margin-bottom: 0.5rem;">12 Episodes &bull; 25K Views</p>
+            <p class="playlist-desc">Let's build a multi-agent workflow in LangGraph from scratch. We will build a RAG framework which takes an external knowledge base and grounds the LLM model. Further we will send some Human Prompts and see the RAG generating answers for the same.</p>
           </div>
         </a>
 
         <!-- Playlist 2 -->
-        <a href="#" class="playlist-landscape-card" target="_blank">
+        <a href="https://www.youtube.com/playlist?list=PL3tZ_eA1QJswSQrpDveVkIH-wElOmsxQT" class="playlist-landscape-card" target="_blank">
           <div class="playlist-landscape-image">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12H3"/><path d="M16 6H3"/><path d="M12 18H3"/><path d="m16 12 5 3-5 3v-6z"/></svg>
-            <!-- <img src="your-playlist-thumbnail.jpg" alt="Playlist Thumbnail"> -->
+            <img src="./media/ai-eng-playlist.png" alt="Playlist Thumbnail">
           </div>
           <div>
-            <h4 class="playlist-title">React Server Components</h4>
-            <p class="list-link" style="margin-bottom: 0.5rem;">8 Videos &bull; Updated 5 months ago</p>
-            <p class="playlist-desc">Deep diving into the new React architecture, understanding server vs client boundaries, and building highly performant applications.</p>
+            <h4 class="playlist-title">AI Engineering 101</h4>
+            <p class="list-link" style="margin-bottom: 0.5rem;">23 Episodes &bull; 4K Views</p>
+            <p class="playlist-desc">All about AI Engineering, Agentic Workflows and Orchestration from scratch.</p>
+          </div>
+        </a>
+
+        <!-- Playlist 3 -->
+        <a href="https://youtube.com/playlist?list=PL3tZ_eA1QJszUFl7PCBERxH5ygD5Z2Twe" class="playlist-landscape-card" target="_blank">
+          <div class="playlist-landscape-image">
+            <img src="./media/ds-101.jpg" alt="Playlist Thumbnail">
+          </div>
+          <div>
+            <h4 class="playlist-title">Distributed Systems 101</h4>
+            <p class="list-link" style="margin-bottom: 0.5rem;">13 Episodes &bull; 10K Views</p>
+            <p class="playlist-desc">A playlist on Distributed Systems where we will talk about concepts like Replication, Transactions, Databases internals, Partitioning and many more from scratch.</p>
           </div>
         </a>
         
@@ -815,20 +821,36 @@
       <h4 style="font-size: 1.125rem; font-weight: 700; margin-bottom: 1rem; color: var(--text-900);">Popular Uploads</h4>
       <div class="grid-2">
         
-        <a href="#" class="video-card">
+        <a href="https://www.youtube.com/watch?v=YXDA4kfW_Dg" target="_blank" class="video-card">
           <div class="video-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; margin-left: 0.25rem;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            <img src="./media/text-2-sql.avif" alt="Video Thumbnail">
           </div>
-          <h4 class="video-title">Deep Dive into Large Language Models</h4>
-          <p class="list-link">120K views &bull; 2 months ago</p>
+          <h4 class="video-title">Building a Text to SQL Agent for handling complex database queries</h4>
+          <p class="list-link">12K views &bull; 39 mins</p>
         </a>
 
-        <a href="#" class="video-card">
+        <a href="https://youtu.be/H9zMp5wzQjc" target="_blank" class="video-card">
           <div class="video-placeholder">
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity: 0.5; margin-left: 0.25rem;"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            <img src="./media/self-rag.avif" alt="Video Thumbnail">
           </div>
-          <h4 class="video-title">Let's build GPT: from scratch, in code</h4>
-          <p class="list-link">450K views &bull; 1 year ago</p>
+          <h4 class="video-title">Building a Self-RAG - Making your Agentic workflows critique through Self-Reflection</h4>
+          <p class="list-link">1.6K views &bull; 1 hr 2 mins</p>
+        </a>
+
+        <a href="https://youtu.be/sI-kEu6G_Tg" target="_blank" class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/self-evolv-google.avif" alt="Video Thumbnail">
+          </div>
+          <h4 class="video-title">Google Self-Evolution algorithm for Deep Researcher</h4>
+          <p class="list-link">1.2K views &bull; 45 mins</p>
+        </a>
+
+        <a href="https://youtu.be/2Ox8Plu-uKw" target="_blank" class="video-card">
+          <div class="video-placeholder">
+            <img src="./media/hitl.avif" alt="Video Thumbnail">
+          </div>
+          <h4 class="video-title">Human in the Loop | Interrupting your Agentic Workflow for user input | LangChain</h4>
+          <p class="list-link">1.3K views &bull; 27 mins</p>
         </a>
 
       </div>
@@ -843,31 +865,55 @@
       <div class="card" style="gap: 1.5rem;">
         
         <!-- Achievement 1 -->
-        <div style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-200);">
-          <div class="job-header" style="margin-bottom: 0.25rem;">
-            <h4 class="card-title">Top Open Source Contributor</h4>
-            <span class="job-date text-mono">2024</span>
+        <div class="award-item" style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-200);">
+          <div class="award-image-placeholder">
+            <img src="./media/hag-won.jpg" alt="HAG" />
           </div>
-          <p class="ach-org" style="margin-bottom: 0.5rem;">GitHub Global Reach</p>
-          <p class="ach-desc" style="margin-bottom: 0.75rem;">Recognized among the top 1% of contributors worldwide for significant contributions to the React and Node.js ecosystems.</p>
-          <a href="#" class="list-link" style="display: inline-flex; align-items: center; gap: 0.25rem;" target="_blank">
-            View Award 
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-          </a>
+          <div class="award-content">
+            <div class="job-header" style="margin-bottom: 0.25rem;">
+              <h4 class="card-title">Won Silver Medal in Google's Hack-a-gTech hackathon</h4>
+              <span class="job-date text-mono">2024</span>
+            </div>
+            <p class="ach-org" style="margin-bottom: 0.5rem;">Google | gTech</p>
+            <p class="ach-desc" style="margin-bottom: 0.75rem;">Our team stood second in an internal org-wide hackathon at Google. Our solution titled "AI Powered Request workflows". </p>
+            <a href="https://drive.google.com/file/d/1huNSlRyu8Hq6co3vHBHAkigFFxZiEolN/view?usp=sharing" class="list-link" style="display: inline-flex; align-items: center; gap: 0.25rem;" target="_blank">
+              View Award 
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </a>
+          </div>
         </div>
 
-        <!-- Achievement 2 -->
-        <div>
-          <div class="job-header" style="margin-bottom: 0.25rem;">
-            <h4 class="card-title">Best Innovation Award</h4>
-            <span class="job-date text-mono">2023</span>
+        <div class="award-item" style="padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-200);">
+          <div class="award-image-placeholder">
+            <img src="./media/promo-gtech.jpeg" alt="promo" />
           </div>
-          <p class="ach-org" style="margin-bottom: 0.5rem;">TechNova Annual Hackathon</p>
-          <p class="ach-desc" style="margin-bottom: 0.75rem;">Led the winning team in developing an AI-driven accessibility tool that automatically adds semantic HTML to legacy codebases.</p>
-          <a href="#" class="list-link" style="display: inline-flex; align-items: center; gap: 0.25rem;" target="_blank">
-            View Award 
-            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
-          </a>
+          <div class="award-content">
+            <div class="job-header" style="margin-bottom: 0.25rem;">
+              <h4 class="card-title">Promoted to L5 Individual Contributor</h4>
+              <span class="job-date text-mono">2024</span>
+            </div>
+            <p class="ach-org" style="margin-bottom: 0.5rem;">Google | gTech</p>
+            <p class="ach-desc" style="margin-bottom: 0.75rem;">Promoted to an L5 Individual Contributor WSE in Google's gTech TAI (Tools Automation and Infrastructure) org in a span of 2.5 years.</p>
+          </div>
+        </div>
+
+        <!-- Achievement 3 -->
+        <div class="award-item">
+          <div class="award-image-placeholder">
+            <img src="./media/icpc.jpg" alt="ACM ICPC" />
+          </div>
+          <div class="award-content">
+            <div class="job-header" style="margin-bottom: 0.25rem;">
+              <h4 class="card-title">ACM ICPC</h4>
+              <span class="job-date text-mono">2017</span>
+            </div>
+            <p class="ach-org" style="margin-bottom: 0.5rem;">ICPC (International Collegiate Programming Contest) - Hindustan University, Chennai</p>
+            <p class="ach-desc" style="margin-bottom: 0.75rem;">Secured 79th Place nationwide in the ACM ICPC 2017 Regional contest.</p>
+            <a href="https://drive.google.com/file/d/1kslHtE0izLHj6BkChAHzNau2Nbz14EDp/view" class="list-link" style="display: inline-flex; align-items: center; gap: 0.25rem;" target="_blank">
+              View Award 
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
+            </a>
+          </div>
         </div>
 
       </div>
@@ -881,14 +927,14 @@
       </h3>
       <div class="card-stack" style="gap: 2rem;">
         <div>
-          <a href="#" class="list-title" style="display: block; font-size: 1.125rem;">Scaling Micro-Frontends in Enterprise Applications</a>
-          <p class="ach-desc" style="margin-top: 0.25rem;">Alex Developer, Sarah Smith</p>
-          <p class="list-link" style="margin-top: 0.25rem;">Journal of Software Engineering &bull; 2023</p>
+          <a href="https://arxiv.org/abs/2601.20843" target="_blank" class="list-title" style="display: block; font-size: 1.125rem;">Deep Researcher with Sequential Plan Reflection and Candidates Crossover</a>
+          <p class="ach-desc" style="margin-top: 0.25rem;">Saurav Prateek</p>
+          <p class="list-link" style="margin-top: 0.25rem;">arXiv &bull; 2026</p>
         </div>
         <div>
-          <a href="#" class="list-title" style="display: block; font-size: 1.125rem;">A Comparative Study of React and Next.js Performance</a>
-          <p class="ach-desc" style="margin-top: 0.25rem;">Alex Developer</p>
-          <p class="list-link" style="margin-top: 0.25rem;">WebDev Conference Proceedings &bull; 2022</p>
+          <a href="https://arxiv.org/abs/2512.03887" target="_blank" class="list-title" style="display: block; font-size: 1.125rem;">A Hierarchical Tree-based approach for creating Configurable and Static Deep Research Agent</a>
+          <p class="ach-desc" style="margin-top: 0.25rem;">Saurav Prateek</p>
+          <p class="list-link" style="margin-top: 0.25rem;">arXiv &bull; 2025</p>
         </div>
       </div>
     </section>
@@ -898,33 +944,34 @@
       <div class="list-header">
         <h3>
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-400);"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          Blog & Newsletter
+          Systems That Scale (Newsletter)
         </h3>
-        <a href="#" class="list-link">Subscribe &rarr;</a>
+        <a href="https://www.linkedin.com/newsletters/systems-that-scale-6879018679527321600/"   
+        target="_blank" class="list-link">Subscribe &rarr;</a>
       </div>
       <div>
-        <a href="#" class="list-item group">
-          <h4 class="list-title">Why I stopped using heavy CSS frameworks</h4>
+        <a href="https://www.linkedin.com/pulse/word-embeddings-how-neural-net-understands-words-space-prateek-sbl5c/" target="_blank" class="list-item group">
+          <h4 class="list-title">Word Embeddings - How a Neural Net understands words and their relationships in a multi-dimensional space</h4>
           <div class="list-meta text-mono">
-            <span>Oct 12, 2025</span>
+            <span>Jun 23, 2025</span>
             <span class="meta-dot">&bull;</span>
-            <span>5 min read</span>
+            <span>5 mins read</span>
           </div>
         </a>
-        <a href="#" class="list-item group">
-          <h4 class="list-title">A practical guide to React Server Components</h4>
+        <a href="https://www.linkedin.com/pulse/building-document-grader-langgraph-prompt-templates-edges-prateek-yvmrc/" target="_blank" class="list-item group">
+          <h4 class="list-title">Building a Document Grader in LangGraph | Prompt Templates and Conditional Edges in LangChain</h4>
           <div class="list-meta text-mono">
-            <span>Aug 28, 2025</span>
+            <span>Sep 1, 2024</span>
             <span class="meta-dot">&bull;</span>
-            <span>8 min read</span>
+            <span>6 min read</span>
           </div>
         </a>
-        <a href="#" class="list-item group">
-          <h4 class="list-title">My journey building the Aura E-Commerce Platform</h4>
+        <a href="https://www.linkedin.com/pulse/graph-database-trying-out-neo4j-saurav-prateek-vlgzc/" target="_blank" class="list-item group">
+          <h4 class="list-title">Graph Database - Trying out Neo4J</h4>
           <div class="list-meta text-mono">
-            <span>Jun 04, 2025</span>
+            <span>Mar 04, 2024</span>
             <span class="meta-dot">&bull;</span>
-            <span>12 min read</span>
+            <span>4 min read</span>
           </div>
         </a>
       </div>
@@ -933,11 +980,7 @@
     <!-- LANDSCAPE IMAGE PLACEHOLDER -->
     <section class="mb-20">
       <div class="landscape-placeholder">
-        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 0.75rem;"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>
-        <span style="font-size: 0.875rem; font-weight: 500;">Featured Landscape Image</span>
-        
-        <!-- To use a real image, uncomment the img tag below and replace the src -->
-        <!-- <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80" alt="Featured Landscape" /> -->
+        <img src="./media/landscape.JPG" alt="Featured Landscape" />
       </div>
     </section>
 
@@ -948,18 +991,16 @@
         Skills & Technologies
       </h3>
       <div class="skills-wrapper">
-        <span class="skill-pill">JavaScript (ES6+)</span>
-        <span class="skill-pill">TypeScript</span>
-        <span class="skill-pill">React</span>
-        <span class="skill-pill">Next.js</span>
-        <span class="skill-pill">Node.js</span>
-        <span class="skill-pill">Express</span>
         <span class="skill-pill">Python</span>
+        <span class="skill-pill">Java</span>
+        <span class="skill-pill">Machine Learning</span>
+        <span class="skill-pill">Artificial Intelligence</span>
+        <span class="skill-pill">Deep Neural Networks</span>
+        <span class="skill-pill">Async Programming</span>
+        <span class="skill-pill">Protobuf</span>
+        <span class="skill-pill">gRPC</span>
         <span class="skill-pill">SQL</span>
-        <span class="skill-pill">PostgreSQL</span>
         <span class="skill-pill">MongoDB</span>
-        <span class="skill-pill">Tailwind CSS</span>
-        <span class="skill-pill">AWS</span>
         <span class="skill-pill">Docker</span>
         <span class="skill-pill">Git/GitHub</span>
         <span class="skill-pill">GraphQL</span>
@@ -968,11 +1009,11 @@
 
     <!-- FOOTER -->
     <footer>
-      <p>&copy; <span id="current-year"></span> Alex Developer. All rights reserved.</p>
+      <p>&copy; <span id="current-year"></span> Saurav Prateek. All rights reserved.</p>
       <div class="footer-links">
-        <a href="https://github.com" target="_blank">GitHub</a>
-        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
-        <a href="mailto:hello@example.com">Email</a>
+        <a href="https://github.com/SauravP97" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/saurav-prateek-7b2096140/" target="_blank">LinkedIn</a>
+        <a href="mailto:srvptk97@gmail.com">Email</a>
       </div>
     </footer>
 
